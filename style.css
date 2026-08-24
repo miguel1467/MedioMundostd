@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+}
+
+body{
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;  
+}
+li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    margin-inline: 1rem;
+    transition: all 0.25s;
+    cursor: default;
+}
+li:hover {
+    backdrop-filter: brightness(1.5);
+}
+.container-button {
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "bt-1 bt-2 bt-3"
+    "bt-4 bt-5 bt-6";
+  position: relative;
+  perspective: 800;
+  padding: 0;
+  width: 135px;
+  height: 47px;
+  transition: all 0.3s ease-in-out;
+}
+
+.container-button:active {
+  transform: scale(0.95);
+}
+
+.hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+}
+
+.bt-1 {
+  grid-area: bt-1;
+}
+
+.bt-2 {
+  grid-area: bt-2;
+}
+
+.bt-3 {
+  grid-area: bt-3;
+}
+
+.bt-4 {
+  grid-area: bt-4;
+}
+
+.bt-5 {
+  grid-area: bt-5;
+}
+
+.bt-6 {
+  grid-area: bt-6;
+}
+
+.bt-1:hover ~ button {
+  transform: rotateX(15deg) rotateY(-15deg) rotateZ(0deg);
+  box-shadow: -2px -2px #18181888;
+}
+
+.bt-1:hover ~ button::after {
+  animation: shake 0.5s ease-in-out 0.3s;
+  text-shadow: -2px -2px #18181888;
+}
+
+.bt-3:hover ~ button {
+  transform: rotateX(15deg) rotateY(15deg) rotateZ(0deg);
+  box-shadow: 2px -2px #18181888;
+}
+
+.bt-3:hover ~ button::after {
+  animation: shake 0.5s ease-in-out 0.3s;
+  text-shadow: 2px -2px #18181888;
+}
+
+.bt-4:hover ~ button {
+  transform: rotateX(-15deg) rotateY(-15deg) rotateZ(0deg);
+  box-shadow: -2px 2px #18181888;
+}
+
+.bt-4:hover ~ button::after {
+  animation: shake 0.5s ease-in-out 0.3s;
+  text-shadow: -2px 2px #18181888;
+}
+
+.bt-6:hover ~ button {
+  transform: rotateX(-15deg) rotateY(15deg) rotateZ(0deg);
+  box-shadow: 2px 2px #18181888;
+}
+
+.bt-6:hover ~ button::after {
+  animation: shake 0.5s ease-in-out 0.3s;
+  text-shadow: 2px 2px #18181888;
+}
+
+.hover:hover ~ button::before {
+  background: transparent;
+}
+
+.hover:hover ~ button::after {
+  content: "WhatsApp";
+  top: -150%;
+  transform: translate(-50%, 0);
+  font-size: 34px;
+  color: #f8f3f3;
+}
+
+button {
+  text-align: center;
+  position: absolute;
+  padding: 0;
+  width: 135px;
+  height: 47px;
+  background: transparent;
+  font-size: 17px;
+  font-weight: 900;
+  border: 3px solid oklab(86.67% -0.23309 0.17787);
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 135px;
+  height: 47px;
+  background-color: #1eff00;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+}
+
+button::after {
+  content: "WhatsApp";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 135px;
+  height: 47px;
+  background-color: transparent;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 47px;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+
+@keyframes shake {
+  0% {
+    left: 45%;
+  }
+
+  25% {
+    left: 54%;
+  }
+
+  50% {
+    left: 48%;
+  }
+
+  75% {
+    left: 52%;
+  }
+
+  100% {
+    left: 50%;
+  }
+}
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;  
+  background: #181c21;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  z-index: -1;
+}
+
+.pattern-bg {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    135deg,
+    #232526 0px,
+    #232526 60px,
+    #23252699 70px,
+    #414345 130px
+  );
+}
+
+.cube-svg {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  left: -30%;
+  top: -20%;
+  background: transparent;
+  opacity: 0.7;
+  z-index: 1;
+  animation: cubeMove 18s linear infinite alternate;
+}
+
+@keyframes cubeMove {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-20%) scale(1.02) rotate(1deg);
+  }
+}
+h1 {
+   background: linear-gradient(50deg, #1eff00, #00ffea);
+  background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 2%;
+}
+i {
+    color: #fafcfa;
+    background: linear-gradient(50deg, #1eff005b, #00ffea4d);
+    margin: 2%;
+    border-radius: 5px;
+    padding: 4%;
+    transition: all 0.25s;
+}
+i:hover {
+    backdrop-filter: brightness(1.5);
+}
+p { 
+  color: #faf7f7;
+    background: linear-gradient(50deg, #1eff004b, #00ffea54);
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    transition: all 0.25s;
+}
+.precios {
+    padding: 1px;;
+    background: linear-gradient(50deg, #1eff005b, #00ffea67);
+    margin: 4%;
+    border-radius: 19px;
+    margin-left: 3%;
+    margin-right: 3%;
+
+}   
+.shadow {
+    width: 100%;
+    height: 250px;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(180deg, black, transparent);
+    z-index: -1;
+}
+.precios {
+    color: #000000;
+}
+footer {
+    color: #fff;
+    
+}
+b {
+    color: #fff;
+    
+}/* Contenedor principal centrado */
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+}
+
+/* Zona de arrastre interactiva */
+.drop-zone {
+  max-width: 400px;
+  width: 100%;
+  height: 200px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 2px dashed #007bff;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efecto al pasar el cursor */
+.drop-zone:hover {
+  background-color: #e9ecef;
+  border-color: #0056b3;
+}
+
+/* Estilos de los elementos internos */
+.icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.drop-zone-text {
+  color: #495057;
+  font-weight: 500;
+  font-size: 16px;
+}
